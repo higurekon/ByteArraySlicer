@@ -1,0 +1,5 @@
+﻿  stdafx.cpp
+  ByteArraySlicer.cpp
+  dllmain.cpp
+     Creating library C:\Users\kevin_000\Documents\Visual Studio 2015\Projects\ZeissProj\x64\Debug\ByteArraySlicer.lib and object C:\Users\kevin_000\Documents\Visual Studio 2015\Projects\ZeissProj\x64\Debug\ByteArraySlicer.exp
+  ByteArraySlicer.vcxproj -> C:\Users\kevin_000\Documents\Visual Studio 2015\Projects\ZeissProj\x64\Debug\ByteArraySlicer.dll

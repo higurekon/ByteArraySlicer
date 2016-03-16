@@ -12,6 +12,7 @@
 #include <string>
 #include <cstring>
 #include <windows.h>
+#include <windef.h>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ using namespace std;
 class BYTEARRAYSLICER_API CByteArraySlicer {
 public:
 	CByteArraySlicer(void);
-	char* SliceRGBArray(char buffer[], int w, int w1, int h1, int w2, int h2);
+	BYTE* SliceRGBArray(BYTE buffer[], int w, int w1, int h1, int w2, int h2);
 	// TODO: add your methods here.
 };
 

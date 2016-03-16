@@ -13,17 +13,17 @@ namespace UnitTest3
 		TEST_METHOD(TestReturnWholeArray) {
 			CByteArraySlicer test_slicer;
 
-			char array[37] = 
-							{ '0', '0', '0', '1', '1', '1', '0', '0', '0', 
-							'1', '1', '1', '1', '1', '1', '1', '1', '1', 
-							'0', '0', '0', '1', '1', '1', '0', '0', '0',
-							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
-			const char slicedarray[37] = 
-							{ '0', '0', '0', '1', '1', '1', '0', '0', '0',
-							'1', '1', '1', '1', '1', '1', '1', '1', '1',
-							'0', '0', '0', '1', '1', '1', '0', '0', '0',
-							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
-			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 2, 3);
+			BYTE array[37] = 
+							{ 0, 255, 0, 255, 255, 255, 0, 0, 0, 
+							255, 255, 255, 255, 255, 255, 255, 255, 255, 
+							0, 0, 0, 255, 255, 255, 0, 0, 0,
+							255, 255, 255, 255, 255, 255, 0, 0, 0, '\0' };
+			BYTE slicedarray[37] = 
+							{ 0, 0, 0, 255, 255, 255, 0, 0, 0,
+							255, 255, 255, 255, 255, 255, 255, 255, 255,
+							0, 0, 0, 255, 255, 255, 0, 0, 0,
+							255, 255, 255, 255, 255, 255, 0, 0, 0, '\0' };
+			BYTE* returnedarray = test_slicer.SliceRGBArray(array, 9, 0, 0, 8, 3);
 			boolean reachedEndOfArray = false;
 			int i = 0;
 			while (!reachedEndOfArray) {
@@ -37,15 +37,15 @@ namespace UnitTest3
 		TEST_METHOD(TestReturnSliceArray) {
 			CByteArraySlicer test_slicer;
 
-			char array[37] =
-							{ '0', '0', '0', '1', '1', '1', '0', '0', '0',
-							'1', '1', '1', '1', '1', '1', '1', '1', '1',
-							'0', '0', '0', '1', '1', '1', '0', '0', '0',
-							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
-			const char slicedarray[37] =
-							{ '1', '1', '1', 
-							'1', '1', '1', '\0' };
-			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 1, 1, 1, 2);
+			BYTE array[37] =
+							{ 0, 0, 0, 255, 255, 255, 0, 0, 0,
+							255, 255, 255, 255, 255, 255, 255, 255, 255,
+							0, 0, 0, 255, 255, 255, 0, 0, 0,
+							255, 255, 255, 255, 255, 255, 0, 0, 0, '\0' };
+			BYTE slicedarray[37] =
+							{ 255, 255, 255, 
+							255, 255, 255, '\0' };
+			BYTE* returnedarray = test_slicer.SliceRGBArray(array, 9, 3, 1, 5, 2);
 			boolean reachedEndOfArray = false;
 			int i = 0;
 			while (!reachedEndOfArray) {

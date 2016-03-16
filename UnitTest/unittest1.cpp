@@ -23,7 +23,7 @@ namespace UnitTest3
 							255, 255, 255, 255, 255, 255, 255, 255, 255,
 							0, 0, 0, 255, 255, 255, 0, 0, 0,
 							255, 255, 255, 255, 255, 255, 0, 0, 0, '\0' };
-			BYTE* returnedarray = test_slicer.SliceRGBArray(array, 9, 0, 0, 8, 3);
+			BYTE* returnedarray = test_slicer.SliceArray(array, 9, 0, 0, 8, 3);
 			boolean reachedEndOfArray = false;
 			int i = 0;
 			while (!reachedEndOfArray) {
@@ -45,11 +45,35 @@ namespace UnitTest3
 			BYTE slicedarray[37] =
 							{ 255, 255, 255, 
 							255, 255, 255, '\0' };
-			BYTE* returnedarray = test_slicer.SliceRGBArray(array, 9, 3, 1, 5, 2);
+			BYTE* returnedarray = test_slicer.SliceArray(array, 9, 3, 1, 5, 2);
 			boolean reachedEndOfArray = false;
 			int i = 0;
 			while (!reachedEndOfArray) {
 				Assert::IsTrue(returnedarray[i] == slicedarray[i]);
+				reachedEndOfArray = (returnedarray[i] == '\0');
+				i++;
+			}
+
+		}
+
+		TEST_METHOD(TestRotateArray) {
+			CByteArraySlicer test_slicer;
+
+			BYTE array[17] =
+							{ 0, 255, 255, 255,
+							255, 255, 255, 255,
+							0, 0, 0, 255,
+							255, 255, 255, 0, '\0' };
+			BYTE rotatedarray[17] =
+							{ 255, 0, 255, 0,
+							255, 0, 255, 255, 
+							255, 255, 255, 255,
+							0, 255, 255, 255, '\0' };
+			BYTE* returnedarray = test_slicer.RotateArray(array, 4, 4);
+			boolean reachedEndOfArray = false;
+			int i = 0;
+			while (!reachedEndOfArray) {
+				Assert::IsTrue(returnedarray[i] == rotatedarray[i]);
 				reachedEndOfArray = (returnedarray[i] == '\0');
 				i++;
 			}

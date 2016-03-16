@@ -20,7 +20,8 @@ using namespace std;
 class BYTEARRAYSLICER_API CByteArraySlicer {
 public:
 	CByteArraySlicer(void);
-	BYTE* SliceRGBArray(BYTE buffer[], int w, int w1, int h1, int w2, int h2);
+	BYTE* SliceArray(BYTE buffer[], int w, int w1, int h1, int w2, int h2);
+	BYTE* RotateArray(BYTE buffer[], int w, int h);
 	// TODO: add your methods here.
 };
 

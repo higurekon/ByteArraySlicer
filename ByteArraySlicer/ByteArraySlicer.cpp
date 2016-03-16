@@ -20,11 +20,11 @@ CByteArraySlicer::CByteArraySlicer()
     return;
 }
 
-BYTE* CByteArraySlicer::SliceRGBArray(BYTE buffer[],
+BYTE* CByteArraySlicer::SliceArray(BYTE buffer[],
 	int w, int w1, int h1, int w2, int h2) {
 
 
-	BYTE* slice = new BYTE[(w2 - w1) * (h2 - h1)+1];
+	BYTE* slice = new BYTE[(w2 - w1) * (h2 - h1) + 1];
 
 	long buffer_index = 0;
 	long slice_index = 0;
@@ -38,4 +38,24 @@ BYTE* CByteArraySlicer::SliceRGBArray(BYTE buffer[],
 	slice[slice_index] = '\0';
 
 	return slice;
+}
+
+BYTE* CByteArraySlicer::RotateArray(BYTE buffer[], int w, int h) {
+
+	BYTE* rotated = new BYTE[w * h + 1];
+
+	long buffer_index = 0;
+	long rotated_index = 0;
+	long counter = 0;
+	for (int y = 0; y < h; y++) {
+		for (int x = 0; x < w; x++) {
+			buffer_index = (y * w) + x;
+			rotated_index = (h - y - 1) + (x * w);
+			rotated[rotated_index] = buffer[buffer_index];
+			counter++;
+		}
+	}
+	rotated[counter] = '\0';
+
+	return rotated;
 }

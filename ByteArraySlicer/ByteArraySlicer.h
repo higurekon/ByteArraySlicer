@@ -10,13 +10,16 @@
 #define BYTEARRAYSLICER_API __declspec(dllimport)
 #endif
 #include <string>
-using std::string;
+#include <cstring>
+#include <windows.h>
+
+using namespace std;
 
 // This class is exported from the ByteArraySlicer.dll
 class BYTEARRAYSLICER_API CByteArraySlicer {
 public:
 	CByteArraySlicer(void);
-	string SliceRGBArray(string Buffer, int w, int w1, int h1, int w2, int h2);
+	char* SliceRGBArray(char buffer[], int w, int w1, int h1, int w2, int h2);
 	// TODO: add your methods here.
 };
 

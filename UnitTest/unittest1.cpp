@@ -12,26 +12,27 @@ namespace UnitTest3
 		
 		TEST_METHOD(TestReturnWholeArray) {
 			CByteArraySlicer test_slicer;
-			string array = "123456789012345678901234567890123456";
-			string slicedarray = "123456789012345678901234567890123456";
-			string returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 3, 4);
-			Assert::IsTrue(returnedarray == slicedarray);
+
+			char array[37] = 
+							{ '1', '0', '1', '1', '0', '1', '1', '0', '1', 
+							'1', '0', '1', '1', '0', '1', '1', '0', '1', 
+							'1', '0', '1', '1', '0', '1', '0', '0', '1',
+							'0', '1', '1', '1', '1', '0', '0', '1', '1', '\0' };
+			const char slicedarray[37] = 
+							{ '1', '0', '1', '1', '0', '1', '1', '0', '1',
+							'1', '0', '1', '1', '0', '1', '1', '0', '1',
+							'1', '0', '1', '1', '0', '1', '0', '0', '1',
+							'0', '1', '1', '1', '1', '0', '0', '1', '1', '\0' };
+			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 3, 4);
+			boolean reachedEndOfArray = false;
+			int i = 0;
+			while (!reachedEndOfArray) {
+				Assert::IsTrue(returnedarray[i] == slicedarray[i]);
+				reachedEndOfArray = (returnedarray[i] == '\0');
+				i++;
+			}
+
 		}
 
-		TEST_METHOD(TestSliceFirstRowArray) {
-			CByteArraySlicer test_slicer;
-			string array = "123456789012345678901234567890123456";
-			string slicedarray = "123456789";
-			string returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 3, 1);
-			Assert::IsTrue(returnedarray == slicedarray);
-		}
-
-		TEST_METHOD(TestSliceBoxArray) {
-			CByteArraySlicer test_slicer;
-			string array = "123456789012345678901234567890123456";
-			string slicedarray = "345234";
-			string returnedarray = test_slicer.SliceRGBArray(array, 3, 1, 1, 2, 3);
-			Assert::IsTrue(returnedarray == slicedarray);
-		}
 	};
 }

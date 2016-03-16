@@ -29,8 +29,8 @@ char* CByteArraySlicer::SliceRGBArray(char buffer[],
 	string buffer_str(buffer_const);
 
 	long buffer_index = 0;
-	for (int y = h1; y < h2; y++) {
-		for (int x = (3 * w1); x < (3 * w2); x += 3) {
+	for (int y = h1; y <= h2; y++) {
+		for (int x = (3 * w1); x <= (3 * w2); x += 3) {
 			buffer_index = (y * 3 * w) + x;
 			slice.append(buffer_str.substr(buffer_index, 3));
 		}

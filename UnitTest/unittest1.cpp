@@ -14,16 +14,38 @@ namespace UnitTest3
 			CByteArraySlicer test_slicer;
 
 			char array[37] = 
-							{ '1', '0', '1', '1', '0', '1', '1', '0', '1', 
-							'1', '0', '1', '1', '0', '1', '1', '0', '1', 
-							'1', '0', '1', '1', '0', '1', '0', '0', '1',
-							'0', '1', '1', '1', '1', '0', '0', '1', '1', '\0' };
+							{ '0', '0', '0', '1', '1', '1', '0', '0', '0', 
+							'1', '1', '1', '1', '1', '1', '1', '1', '1', 
+							'0', '0', '0', '1', '1', '1', '0', '0', '0',
+							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
 			const char slicedarray[37] = 
-							{ '1', '0', '1', '1', '0', '1', '1', '0', '1',
-							'1', '0', '1', '1', '0', '1', '1', '0', '1',
-							'1', '0', '1', '1', '0', '1', '0', '0', '1',
-							'0', '1', '1', '1', '1', '0', '0', '1', '1', '\0' };
-			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 3, 4);
+							{ '0', '0', '0', '1', '1', '1', '0', '0', '0',
+							'1', '1', '1', '1', '1', '1', '1', '1', '1',
+							'0', '0', '0', '1', '1', '1', '0', '0', '0',
+							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
+			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 0, 0, 2, 3);
+			boolean reachedEndOfArray = false;
+			int i = 0;
+			while (!reachedEndOfArray) {
+				Assert::IsTrue(returnedarray[i] == slicedarray[i]);
+				reachedEndOfArray = (returnedarray[i] == '\0');
+				i++;
+			}
+
+		}
+
+		TEST_METHOD(TestReturnSliceArray) {
+			CByteArraySlicer test_slicer;
+
+			char array[37] =
+							{ '0', '0', '0', '1', '1', '1', '0', '0', '0',
+							'1', '1', '1', '1', '1', '1', '1', '1', '1',
+							'0', '0', '0', '1', '1', '1', '0', '0', '0',
+							'1', '1', '1', '1', '1', '1', '0', '0', '0', '\0' };
+			const char slicedarray[37] =
+							{ '1', '1', '1', 
+							'1', '1', '1', '\0' };
+			char* returnedarray = test_slicer.SliceRGBArray(array, 3, 1, 1, 1, 2);
 			boolean reachedEndOfArray = false;
 			int i = 0;
 			while (!reachedEndOfArray) {
